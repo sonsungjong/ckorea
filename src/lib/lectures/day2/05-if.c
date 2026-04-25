@@ -20,5 +20,11 @@ int main(){
         printf("C 등급\n");
     }
 
+    if(score >= 60){
+        printf("합격!");
+    } else {
+        printf("불합격ㅠㅠ");
+    }
+
     return 0;
 }
