@@ -24,7 +24,6 @@ export default async function StepPage({ params }) {
   }
 
   // Calculate Next and Previous logic
-  const dayIndex = courseData.findIndex(d => d.dayId === dayId);
   const stepIndex = day.steps.findIndex(s => s.id === step);
 
   let prevLink = null;
@@ -46,7 +45,7 @@ export default async function StepPage({ params }) {
 
         {/* Navigation Breadcrumb */}
         <div className="mb-8">
-          <Link href="/" className="text-zinc-500 hover:text-white transition-colors text-sm mb-6 inline-block">
+          <Link href="/lectures" className="text-zinc-500 hover:text-white transition-colors text-sm mb-6 inline-block">
             ← 목차로 돌아가기
           </Link>
           <div className="flex items-center gap-3 mb-2">
@@ -90,7 +89,7 @@ export default async function StepPage({ params }) {
             </Link>
           ) : (
             <Link
-              href="/"
+              href="/lectures"
               className="px-6 py-3 rounded-xl bg-emerald-600 text-white hover:bg-emerald-500 transition-all font-medium flex items-center gap-2 shadow-lg shadow-emerald-500/20"
             >
               <span>완료! (목차로)</span>

@@ -1,48 +1,106 @@
+import fs from "node:fs";
+import path from "node:path";
+import day1Quiz from "./quizzes/day1";
+import day2Quiz from "./quizzes/day2";
+
+function readLectureCode(dayId, filename) {
+  return fs.readFileSync(
+    path.join(process.cwd(), "src", "lib", "lectures", dayId, filename),
+    "utf8"
+  );
+}
+
+const day1Lecture = {
+  dayId: "day1",
+  title: "Day 1",
+  description: "변수와 연산자",
+  steps: [
+    {
+      id: "1",
+      title: "printf 출력",
+      description: "printf 함수로 화면에 문자열을 출력합니다.",
+      code: readLectureCode("day1", "01-printf.c")
+    },
+    {
+      id: "2",
+      title: "반복되는 출력",
+      description: "같은 출력 코드가 반복될 때 생기는 문제를 확인합니다.",
+      code: readLectureCode("day1", "02-variable.c")
+    },
+    {
+      id: "3",
+      title: "변수",
+      description: "값을 저장하고 재사용하는 변수의 필요성을 배웁니다.",
+      code: readLectureCode("day1", "03-variable.c")
+    },
+    {
+      id: "4",
+      title: "기본 연산자",
+      description: "산술 연산자를 사용해 값을 계산합니다.",
+      code: readLectureCode("day1", "04-operator.c")
+    },
+    {
+      id: "5",
+      title: "연산자 활용",
+      description: "연산자를 활용한 예제 코드를 확인합니다.",
+      code: readLectureCode("day1", "05-operator.c")
+    }
+  ]
+};
+
+const day2Lecture = {
+  dayId: "day2",
+  title: "Day 2",
+  description: "조건문",
+  steps: [
+    {
+      id: "1",
+      title: "변수와 연산자 복습",
+      description: "변수와 연산자를 함께 사용하는 예제를 확인합니다.",
+      code: readLectureCode("day2", "01-variable-operator.c")
+    },
+    {
+      id: "2",
+      title: "연산자",
+      description: "여러 연산자의 동작을 예제로 확인합니다.",
+      code: readLectureCode("day2", "02-operator.c")
+    },
+    {
+      id: "3",
+      title: "scanf 입력",
+      description: "scanf로 사용자 입력을 받는 방법을 배웁니다.",
+      code: readLectureCode("day2", "03-scanf.c")
+    },
+    {
+      id: "4",
+      title: "if 조건문",
+      description: "조건이 참일 때만 코드를 실행하는 if문을 배웁니다.",
+      code: readLectureCode("day2", "04-if.c")
+    },
+    {
+      id: "5",
+      title: "if 조건문 활용",
+      description: "조건문을 사용한 분기 예제를 확인합니다.",
+      code: readLectureCode("day2", "05-if.c")
+    },
+    {
+      id: "6",
+      title: "if 조건문 연습",
+      description: "조건문 연습용 예제 파일입니다.",
+      code: readLectureCode("day2", "06-if.c")
+    },
+    {
+      id: "7",
+      title: "switch 분기문",
+      description: "여러 값 중 하나를 선택해 분기하는 switch문을 배웁니다.",
+      code: readLectureCode("day2", "07-switch.c")
+    }
+  ]
+};
+
 export const courseData = [
-  {
-    dayId: "day1",
-    title: "Day 1",
-    description: "변수와 연산",
-    steps: [
-      {
-        id: "1",
-        title: "Hello World 출력",
-        description: "C언어의 가장 기본이 되는 printf 함수를 사용하여 화면에 텍스트를 출력해봅시다.",
-        code: `#include <stdio.h>\n\nint main() {\n    printf("Hello, World!\\n");\n    printf("C언어 학습을 환영합니다!\\n");\n    \n    return 0;\n}`
-      },
-      {
-        id: "2",
-        title: "변수 선언과 초기화",
-        description: "데이터를 저장할 수 있는 공간인 변수를 만들고 값을 넣어봅니다.",
-        code: `#include <stdio.h>\n\nint main() {\n    int age = 20;           // 정수형 변수\n    float height = 175.5;   // 실수형 변수\n    char grade = 'A';       // 문자형 변수\n    \n    printf("나이: %d\\n", age);\n    printf("키: %.1f\\n", height);\n    printf("등급: %c\\n", grade);\n    \n    return 0;\n}`
-      },
-      {
-        id: "3",
-        title: "기본 연산자",
-        description: "덧셈, 뺄셈 등 수학적 계산을 수행하는 연산자를 알아봅니다.",
-        code: `#include <stdio.h>\n\nint main() {\n    int a = 10, b = 3;\n    \n    printf("a + b = %d\\n", a + b);\n    printf("a - b = %d\\n", a - b);\n    printf("a * b = %d\\n", a * b);\n    printf("a / b = %d (몫)\\n", a / b);\n    printf("a %% b = %d (나머지)\\n", a % b);\n    \n    return 0;\n}`
-      }
-    ]
-  },
-  {
-    dayId: "day2",
-    title: "Day 2",
-    description: "조건문",
-    steps: [
-      {
-        id: "1",
-        title: "if 조건문",
-        description: "특정 조건이 참(true)일 때만 코드를 실행하는 if문을 배워봅시다.",
-        code: `#include <stdio.h>\n\nint main() {\n    int score = 85;\n    \n    if (score >= 90) {\n        printf("A 학점입니다.\\n");\n    } else if (score >= 80) {\n        printf("B 학점입니다.\\n");\n    } else {\n        printf("노력이 필요합니다.\\n");\n    }\n    \n    return 0;\n}`
-      },
-      {
-        id: "2",
-        title: "switch 분기문",
-        description: "여러 개의 값 중 하나와 일치하는지 확인할 때 유용한 switch문입니다.",
-        code: `#include <stdio.h>\n\nint main() {\n    int option = 2;\n    \n    switch (option) {\n        case 1:\n            printf("새 게임 시작\\n");\n            break;\n        case 2:\n            printf("게임 불러오기\\n");\n            break;\n        case 3:\n            printf("설정\\n");\n            break;\n        default:\n            printf("잘못된 입력입니다.\\n");\n            break;\n    }\n    \n    return 0;\n}`
-      }
-    ]
-  },
+  day1Lecture,
+  day2Lecture,
   {
     dayId: "day3",
     title: "Day 3",
@@ -135,6 +193,150 @@ export const courseData = [
   }
 ];
 
+export const quizData = [
+  day1Quiz,
+  day2Quiz,
+  {
+    dayId: "day3",
+    title: "Day 3 퀴즈",
+    description: "반복문 빈칸 완성",
+    questions: [
+      {
+        id: "1",
+        prompt: "1부터 5까지 출력되도록 반복문의 빈칸을 채우세요.",
+        code: `#include <stdio.h>
+
+int main() {
+    ____(int i = 1; i <= 5; i++) {
+        printf("%d\\n", i);
+    }
+
+    return 0;
+}`,
+        answer: `for`
+      }
+    ]
+  },
+  {
+    dayId: "day4",
+    title: "Day 4 퀴즈",
+    description: "배열 빈칸 완성",
+    questions: [
+      {
+        id: "1",
+        prompt: "배열의 첫 번째 값이 출력되도록 빈칸을 채우세요.",
+        code: `#include <stdio.h>
+
+int main() {
+    int scores[3] = {80, 90, 100};
+    printf("%d\\n", scores[____]);
+
+    return 0;
+}`,
+        answer: `0`
+      }
+    ]
+  },
+  {
+    dayId: "day5",
+    title: "Day 5 퀴즈",
+    description: "함수 빈칸 완성",
+    questions: [
+      {
+        id: "1",
+        prompt: "add 함수가 두 수의 합을 반환하도록 빈칸을 채우세요.",
+        code: `#include <stdio.h>
+
+int add(int a, int b) {
+    return ____;
+}
+
+int main() {
+    printf("%d\\n", add(10, 20));
+
+    return 0;
+}`,
+        answer: `a + b`
+      }
+    ]
+  },
+  {
+    dayId: "day6",
+    title: "Day 6 퀴즈",
+    description: "포인터 빈칸 완성",
+    questions: [
+      {
+        id: "1",
+        prompt: "포인터 `ptr`이 `num`의 주소를 저장하도록 빈칸을 채우세요.",
+        code: `#include <stdio.h>
+
+int main() {
+    int num = 10;
+    int *ptr = ____;
+
+    printf("%d\\n", *ptr);
+
+    return 0;
+}`,
+        answer: `&num`
+      }
+    ]
+  },
+  {
+    dayId: "day7",
+    title: "Day 7 퀴즈",
+    description: "구조체 빈칸 완성",
+    questions: [
+      {
+        id: "1",
+        prompt: "Student 구조체 변수를 선언하도록 빈칸을 채우세요.",
+        code: `#include <stdio.h>
+
+struct Student {
+    int age;
+    int score;
+};
+
+int main() {
+    ____ s1;
+    s1.age = 20;
+
+    printf("%d\\n", s1.age);
+
+    return 0;
+}`,
+        answer: `struct Student`
+      }
+    ]
+  },
+  {
+    dayId: "day8",
+    title: "Day 8 퀴즈",
+    description: "함수 포인터 빈칸 완성",
+    questions: [
+      {
+        id: "1",
+        prompt: "함수 포인터 `calc`가 add 함수를 가리키도록 빈칸을 채우세요.",
+        code: `#include <stdio.h>
+
+int add(int a, int b) {
+    return a + b;
+}
+
+int main() {
+    int (*calc)(int, int);
+    calc = ____;
+
+    printf("%d\\n", calc(10, 5));
+
+    return 0;
+}`,
+        answer: `add`
+      }
+    ]
+  }
+];
+
 export function getCourseOverview() {
   return courseData.map(day => ({
     dayId: day.dayId,
@@ -152,4 +354,17 @@ export function getStepData(dayId, stepId) {
   const day = getDayData(dayId);
   if (!day) return null;
   return day.steps.find(s => s.id === stepId) || null;
+}
+
+export function getQuizOverview() {
+  return quizData.map(quiz => ({
+    dayId: quiz.dayId,
+    title: quiz.title,
+    description: quiz.description,
+    questionCount: quiz.questions.length
+  }));
+}
+
+export function getQuizData(dayId) {
+  return quizData.find(q => q.dayId === dayId) || null;
 }
