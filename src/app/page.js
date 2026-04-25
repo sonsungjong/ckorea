@@ -12,9 +12,6 @@ export default function Home() {
           <h1 className="text-4xl md:text-5xl font-bold tracking-tight text-white mb-4">
             C언어 기초 프로그래밍
           </h1>
-          <p className="text-zinc-400">
-            C언어 입문.
-          </p>
         </div>
 
         {/* Curriculum List */}
@@ -33,9 +30,6 @@ export default function Home() {
                   <h3 className="text-2xl font-bold text-white mb-2 group-hover:text-blue-400 transition-colors">
                     {item.title} : {item.description}
                   </h3>
-                  <p className="text-zinc-400">
-                    총 {item.stepCount}개의 스텝으로 구성되어 있습니다.
-                  </p>
                 </div>
               </div>
 

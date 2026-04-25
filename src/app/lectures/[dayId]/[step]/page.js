@@ -26,32 +26,24 @@ export default async function StepPage({ params }) {
   // Calculate Next and Previous logic
   const dayIndex = courseData.findIndex(d => d.dayId === dayId);
   const stepIndex = day.steps.findIndex(s => s.id === step);
-  
+
   let prevLink = null;
   let nextLink = null;
 
   if (stepIndex > 0) {
     // Previous step in the same day
-    prevLink = \`/lectures/\${dayId}/\${day.steps[stepIndex - 1].id}\`;
-  } else if (dayIndex > 0) {
-    // Last step of the previous day
-    const prevDay = courseData[dayIndex - 1];
-    prevLink = \`/lectures/\${prevDay.dayId}/\${prevDay.steps[prevDay.steps.length - 1].id}\`;
+    prevLink = `/lectures/${dayId}/${day.steps[stepIndex - 1].id}`;
   }
 
   if (stepIndex < day.steps.length - 1) {
     // Next step in the same day
-    nextLink = \`/lectures/\${dayId}/\${day.steps[stepIndex + 1].id}\`;
-  } else if (dayIndex < courseData.length - 1) {
-    // First step of the next day
-    const nextDay = courseData[dayIndex + 1];
-    nextLink = \`/lectures/\${nextDay.dayId}/1\`;
+    nextLink = `/lectures/${dayId}/${day.steps[stepIndex + 1].id}`;
   }
 
   return (
     <div className="min-h-screen bg-[#050505] text-white selection:bg-white/20 pt-16">
       <div className="max-w-4xl mx-auto px-6 pb-24">
-        
+
         {/* Navigation Breadcrumb */}
         <div className="mb-8">
           <Link href="/" className="text-zinc-500 hover:text-white transition-colors text-sm mb-6 inline-block">
@@ -79,7 +71,7 @@ export default async function StepPage({ params }) {
         {/* Footer Navigation */}
         <div className="flex items-center justify-between border-t border-zinc-800 pt-8 mt-12">
           {prevLink ? (
-            <Link 
+            <Link
               href={prevLink}
               className="px-6 py-3 rounded-xl bg-[#0a0a0a] border border-zinc-800 text-zinc-300 hover:bg-zinc-900 hover:border-zinc-600 transition-all font-medium flex items-center gap-2"
             >
@@ -90,22 +82,22 @@ export default async function StepPage({ params }) {
           )}
 
           {nextLink ? (
-            <Link 
+            <Link
               href={nextLink}
               className="px-6 py-3 rounded-xl bg-blue-600 text-white hover:bg-blue-500 transition-all font-medium flex items-center gap-2 shadow-lg shadow-blue-500/20"
             >
               <span>다음 단계 →</span>
             </Link>
           ) : (
-            <Link 
+            <Link
               href="/"
               className="px-6 py-3 rounded-xl bg-emerald-600 text-white hover:bg-emerald-500 transition-all font-medium flex items-center gap-2 shadow-lg shadow-emerald-500/20"
             >
-              <span>강의 완료! (목차로)</span>
+              <span>완료! (목차로)</span>
             </Link>
           )}
         </div>
-        
+
       </div>
     </div>
   );
