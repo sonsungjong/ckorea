@@ -3,6 +3,7 @@ import path from "node:path";
 import day1Quiz from "./quizzes/day1";
 import day2Quiz from "./quizzes/day2";
 import day3Quiz from "./quizzes/day3";
+import day4Quiz from "./quizzes/day4";
 
 function readLectureCode(dayId, filename) {
   return fs.readFileSync(
@@ -87,26 +88,7 @@ export const quizData = [
   day1Quiz,
   day2Quiz,
   day3Quiz,
-  {
-    dayId: "day4",
-    title: "Day 4 퀴즈",
-    description: "배열 빈칸 완성",
-    questions: [
-      {
-        id: "1",
-        prompt: "배열의 첫 번째 값이 출력되도록 빈칸을 채우세요.",
-        code: `#include <stdio.h>
-
-int main() {
-    int scores[3] = {80, 90, 100};
-    printf("%d\\n", scores[____]);
-
-    return 0;
-}`,
-        answer: `0`
-      }
-    ]
-  },
+  day4Quiz,
   {
     dayId: "day5",
     title: "Day 5 퀴즈",
