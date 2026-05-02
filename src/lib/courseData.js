@@ -2,6 +2,7 @@ import fs from "node:fs";
 import path from "node:path";
 import day1Quiz from "./quizzes/day1";
 import day2Quiz from "./quizzes/day2";
+import day3Quiz from "./quizzes/day3";
 
 function readLectureCode(dayId, filename) {
   return fs.readFileSync(
@@ -9,6 +10,27 @@ function readLectureCode(dayId, filename) {
     "utf8"
   );
 }
+
+function getDynamicSteps(dayId) {
+  try {
+    const dirPath = path.join(process.cwd(), "src", "lib", "lectures", dayId);
+    if (!fs.existsSync(dirPath)) return [];
+    
+    const files = fs.readdirSync(dirPath)
+      .filter(f => f.endsWith('.c'))
+      .sort((a, b) => a.localeCompare(b, undefined, { numeric: true }));
+      
+    return files.map((file, index) => ({
+      id: (index + 1).toString(),
+      title: file,
+      description: "",
+      code: readLectureCode(dayId, file)
+    }));
+  } catch (e) {
+    return [];
+  }
+}
+
 
 const day1Lecture = {
   dayId: "day1",
@@ -105,20 +127,7 @@ export const courseData = [
     dayId: "day3",
     title: "Day 3",
     description: "반복문",
-    steps: [
-      {
-        id: "1",
-        title: "for 반복문",
-        description: "정해진 횟수만큼 코드를 반복 실행할 때 사용합니다.",
-        code: `#include <stdio.h>\n\nint main() {\n    // 1부터 5까지 출력하기\n    for (int i = 1; i <= 5; i++) {\n        printf("%d번째 반복입니다.\\n", i);\n    }\n    \n    return 0;\n}`
-      },
-      {
-        id: "2",
-        title: "while 반복문",
-        description: "조건이 참인 동안 계속해서 코드를 반복 실행합니다.",
-        code: `#include <stdio.h>\n\nint main() {\n    int count = 5;\n    \n    // count가 0보다 클 때까지 반복\n    while (count > 0) {\n        printf("카운트다운: %d\\n", count);\n        count--;  // count 1 감소\n    }\n    printf("발사!\\n");\n    \n    return 0;\n}`
-      }
-    ]
+    steps: getDynamicSteps("day3")
   },
   {
     dayId: "day4",
@@ -196,27 +205,7 @@ export const courseData = [
 export const quizData = [
   day1Quiz,
   day2Quiz,
-  {
-    dayId: "day3",
-    title: "Day 3 퀴즈",
-    description: "반복문 빈칸 완성",
-    questions: [
-      {
-        id: "1",
-        prompt: "1부터 5까지 출력되도록 반복문의 빈칸을 채우세요.",
-        code: `#include <stdio.h>
-
-int main() {
-    ____(int i = 1; i <= 5; i++) {
-        printf("%d\\n", i);
-    }
-
-    return 0;
-}`,
-        answer: `for`
-      }
-    ]
-  },
+  day3Quiz,
   {
     dayId: "day4",
     title: "Day 4 퀴즈",

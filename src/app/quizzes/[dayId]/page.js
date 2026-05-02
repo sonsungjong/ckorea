@@ -41,7 +41,7 @@ export default async function QuizPage({ params }) {
               <div className="text-sm font-bold text-emerald-400 mb-3">
                 Q{index + 1}
               </div>
-              <h2 className="text-xl font-bold text-white mb-5">{item.prompt}</h2>
+              <h2 className="text-xl font-bold text-white mb-5 whitespace-pre-wrap">{item.prompt}</h2>
               {item.table || item.tableRows ? (
                 <div className="mb-6 overflow-hidden rounded-2xl border border-emerald-500/20 bg-[#070f0b]">
                   <div className="border-b border-emerald-500/20 bg-emerald-500/10 px-5 py-4">
