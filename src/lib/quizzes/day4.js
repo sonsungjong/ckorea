@@ -1,54 +1,22 @@
 const day4Quiz = {
   dayId: "day4",
   title: "Day 4 퀴즈",
-  description: "배열 활용 및 프로그램 작성",
+  description: "배열과 문자열 핵심 개념 복습",
   questions: [
     {
       id: "1",
-      prompt: "배열 `nums`의 모든 요소를 순서대로 출력하도록 반복문의 조건식을 채워보세요.",
-      code: `#include <stdio.h>
-
-int main() {
-    int nums[5] = {10, 20, 30, 40, 50};
-    
-    for(int i = 0; ____; i++) {
-        printf("%d ", nums[i]);
-    }
-    
-    return 0;
-}`,
-      answer: `i < 5`
-    },
-    {
-      id: "2",
-      prompt: "문자열을 입력받을 때는 일반 변수와 달리 배열의 이름만 적습니다. scanf 빈칸을 알맞게 채워보세요.",
-      code: `#define _CRT_SECURE_NO_WARNINGS
-#include <stdio.h>
-
-int main() {
-    char str[50];
-    
-    printf("이름을 입력하세요: ");
-    scanf("%s", ____);
-    
-    printf("입력된 이름: %s\\n", str);
-    
-    return 0;
-}`,
-      answer: `str`
-    },
-    {
-      id: "3",
-      prompt: "배열 요소들의 총합을 구하는 코드를 작성해 보세요.\n\n[실행 결과]\n총합 : 150",
+      prompt: "배열 요소들의 총합과 평균을 구하는 코드를 작성해 보세요. 평균은 실수(double) 형태로 출력해야 합니다.\n\n[실행 결과]\n총합 : 150\n평균 : 30.000000",
       starterCode: `#include <stdio.h>
 
 int main() {
     int num[5] = { 10, 20, 30, 40, 50 };
     int sum = 0;
+    double avg = 0.0;
 
-    // 여기에 배열 요소의 합을 구하는 코드를 작성하세요.
+    // 여기에 배열 요소의 합과 평균을 구하는 코드를 작성하세요.
 
     printf("총합 : %d\\n", sum);
+    printf("평균 : %lf\\n", avg);
 
     return 0;
 }`,
@@ -57,49 +25,137 @@ int main() {
 int main() {
     int num[5] = { 10, 20, 30, 40, 50 };
     int sum = 0;
+    double avg = 0.0;
 
     for(int i = 0; i < 5; i++) {
         sum += num[i];
     }
+    avg = (double)sum / 5.0;
 
     printf("총합 : %d\\n", sum);
+    printf("평균 : %lf\\n", avg);
+
+    return 0;
+}`
+    },
+    {
+      id: "2",
+      prompt: "입력받은 영단어를 거꾸로(역순) 출력하는 프로그램을 작성해 보세요. (아직 문자열 길이를 모른다고 가정하고 배열의 끝에서부터 널 문자를 피해 복사해보세요.)\n\n[실행 결과]\n단어를 입력하세요: hello\n역순 출력: olleh",
+      starterCode: `#define _CRT_SECURE_NO_WARNINGS
+#include <stdio.h>
+
+int main() {
+    char str[64] = { '\\0', };
+    char reverse[64] = { 0, };
+
+    printf("단어를 입력하세요: ");
+    scanf("%s", str);
+
+    // 여기에 단어를 역순으로 reverse 배열에 저장하는 코드를 작성하세요.
+    
+
+    printf("역순 출력: %s\\n", reverse);
+    return 0;
+}`,
+      answerCode: `#define _CRT_SECURE_NO_WARNINGS
+#include <stdio.h>
+
+int main() {
+    char str[64] = { '\\0', };
+    char reverse[64] = { 0, };
+
+    printf("단어를 입력하세요: ");
+    scanf("%s", str);
+
+    int j = 0;
+    for (int i = 63; i >= 0; i--) {
+        if (str[i] == '\\0') {
+            continue;
+        }
+        reverse[j] = str[i];
+        j++;
+    }
+
+    printf("역순 출력: %s\\n", reverse);
+    return 0;
+}`
+    },
+    {
+      id: "3",
+      prompt: "0은 빈 자리, 1은 앉은 자리를 나타내는 교실 좌석표가 2차원 배열로 주어졌습니다. 중첩 for문을 이용해 좌석표를 화면에 출력하는 프로그램을 완성해보세요.\n\n[실행 결과]\n교실 좌석표\n0 1 0 0 \n1 1 0 0 \n0 0 1 0 ",
+      starterCode: `#include <stdio.h>
+
+int main() {
+    int seats[3][4] = {
+        {0, 1, 0, 0},
+        {1, 1, 0, 0},
+        {0, 0, 1, 0}
+    };
+
+    printf("교실 좌석표\\n");
+
+    // 여기에 중첩 for문을 작성하여 좌석표를 출력하세요.
+
+    return 0;
+}`,
+      answerCode: `#include <stdio.h>
+
+int main() {
+    int seats[3][4] = {
+        {0, 1, 0, 0},
+        {1, 1, 0, 0},
+        {0, 0, 1, 0}
+    };
+
+    printf("교실 좌석표\\n");
+
+    for (int row = 0; row < 3; row++) {
+        for (int col = 0; col < 4; col++) {
+            printf("%d ", seats[row][col]);
+        }
+        printf("\\n");
+    }
 
     return 0;
 }`
     },
     {
       id: "4",
-      prompt: "2차원 배열 `arr`의 모든 요소를 출력하도록 중첩 반복문의 빈칸(행, 열의 크기)을 알맞게 채워보세요.",
-      code: `#include <stdio.h>
+      prompt: "사용자로부터 비밀번호를 입력받습니다. 비밀번호가 4글자 미만이라면 '비밀번호는 4글자 이상이어야 합니다.'를 출력하고, 4글자 이상일 때만 \`strcmp\`를 사용하여 \"1234\"와 일치하는지 확인하는 프로그램을 작성해보세요.\n\n[실행 결과 1]\n비밀번호를 입력하세요: 12\n비밀번호는 4글자 이상이어야 합니다.\n\n[실행 결과 2]\n비밀번호를 입력하세요: 1234\n비밀번호가 일치합니다.",
+      starterCode: `#define _CRT_SECURE_NO_WARNINGS
+#include <stdio.h>
+#include <string.h>
 
 int main() {
-    int arr[2][3] = {
-        {1, 2, 3},
-        {4, 5, 6}
-    };
+    char pw[50];
 
-    for(int i = 0; i < ____; i++) {
-        for(int j = 0; j < ____; j++) {
-            printf("%d ", arr[i][j]);
-        }
-        printf("\\n");
-    }
+    printf("비밀번호를 입력하세요: ");
+    scanf("%[^\\n]", pw); // 띄어쓰기를 포함하여 문자열을 입력받습니다.
+
+    // 1. strlen을 사용하여 길이가 4 미만인지 확인하세요.
+    // 2. 4 이상이라면 strcmp를 사용하여 "1234"와 비교하세요.
+    
 
     return 0;
 }`,
-      answerCode: `#include <stdio.h>
+      answerCode: `#define _CRT_SECURE_NO_WARNINGS
+#include <stdio.h>
+#include <string.h>
 
 int main() {
-    int arr[2][3] = {
-        {1, 2, 3},
-        {4, 5, 6}
-    };
+    char pw[50];
 
-    for(int i = 0; i < 2; i++) {
-        for(int j = 0; j < 3; j++) {
-            printf("%d ", arr[i][j]);
+    printf("비밀번호를 입력하세요: ");
+    scanf("%[^\\n]", pw); // 띄어쓰기를 포함하여 문자열을 입력받습니다.
+
+    if (strlen(pw) < 4) {
+        printf("비밀번호는 4글자 이상이어야 합니다.\\n");
+    } else {
+        if (strcmp(pw, "1234") == 0) {
+            printf("비밀번호가 일치합니다.\\n");
+        } else {
+            printf("비밀번호가 틀렸습니다.\\n");
         }
-        printf("\\n");
     }
 
     return 0;
