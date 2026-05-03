@@ -40,43 +40,54 @@ int main() {
     },
     {
       id: "2",
-      prompt: "입력받은 영단어를 거꾸로(역순) 출력하는 프로그램을 작성해 보세요. (아직 문자열 길이를 모른다고 가정하고 배열의 끝에서부터 널 문자를 피해 복사해보세요.)\n\n[실행 결과]\n단어를 입력하세요: hello\n역순 출력: olleh",
+      prompt: "입력받은 영단어를 거꾸로 출력하세요.\n\n[실행 결과]\n단어를 입력하세요: hello\n역순 출력: olleh",
       starterCode: `#define _CRT_SECURE_NO_WARNINGS
 #include <stdio.h>
 
 int main() {
-    char str[64] = { '\\0', };
-    char reverse[64] = { 0, };
+    char word[50] = {'\\0'};
+    int len = 0;
 
     printf("단어를 입력하세요: ");
-    scanf("%s", str);
+    scanf("%s", word);
 
-    // 여기에 단어를 역순으로 reverse 배열에 저장하는 코드를 작성하세요.
+    // 1. while 문을 사용하여 문자열의 길이(len)를 직접 구해보세요. (널 문자를 만날 때까지)
     
 
-    printf("역순 출력: %s\\n", reverse);
+    printf("역순 출력: ");
+
+    // 2. 구한 길이(len)를 바탕으로 for 문을 사용하여 단어를 역순으로 출력하세요.
+    
+
+    printf("\\n");
+
     return 0;
 }`,
       answerCode: `#define _CRT_SECURE_NO_WARNINGS
 #include <stdio.h>
 
 int main() {
-    char str[64] = { '\\0', };
-    char reverse[64] = { 0, };
+    char word[50] = {'\\0'};
+    int len = 0;
 
     printf("단어를 입력하세요: ");
-    scanf("%s", str);
+    scanf("%s", word);
 
-    int j = 0;
-    for (int i = 63; i >= 0; i--) {
-        if (str[i] == '\\0') {
-            continue;
+    while (1) {
+        if (word[len] == '\\0') {
+            break;
         }
-        reverse[j] = str[i];
-        j++;
+        len++;
     }
 
-    printf("역순 출력: %s\\n", reverse);
+    printf("역순 출력: ");
+
+    for (int i = len - 1; i >= 0; i--) {
+        printf("%c", word[i]);
+    }
+
+    printf("\\n");
+
     return 0;
 }`
     },
