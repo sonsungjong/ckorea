@@ -8,6 +8,8 @@ int main(){
     int number;             // 변수
     int numbers[10];        // 배열
 
+    double dnum[] = { 0.0, 1.0, 2.0 };          // 3칸 자동 생성
+
     // 배열사용이유1 : 정수변수 10개를 만들고자 한다
     int n1, n2, n3, n4, n5, n6, n7, n8, n9, n10;
     int nums[10];

@@ -1,34 +1,29 @@
 #include <stdio.h>
 
-int main(){
-    int arr[2][3] = {
-        {1,2,3},
-        {4,5,6}
+int main() {
+    // 0 = 빈 자리, 1 = 예약된 자리
+    int seats[3][4] = {
+        {0, 0, 0, 0},
+        {0, 0, 0, 0},
+        {0, 0, 0, 0}
     };
 
-    printf("%d\n", arr[0][0]);      // 1
-    printf("%d\n", arr[0][1]);      // 2
-    printf("%d\n", arr[0][2]);      // 3
-    printf("%d\n", arr[1][0]);      // 4
-    printf("%d\n", arr[1][1]);      // 5
-    printf("%d\n", arr[1][2]);      // 6
+    printf("예약 전 좌석표\n");
 
-    for(int i = 0; i < 2; i++){
-        for(int j = 0; j < 3; j++){
-            printf("%d ", arr[i][j]);
+    for (int row = 0; row < 3; row++) {
+        for (int col = 0; col < 4; col++) {
+            printf("%d ", seats[row][col]);
         }
         printf("\n");
     }
 
-    for(int i = 0; i < 2; i++){
-        for(int j = 0; j < 3; j++){
-            arr[i][j] = 10;         // 10으로 모두 변경
-        }
-    }
+    seats[1][2] = 1;            // 1행 2열 좌석 예약
 
-    for(int i = 0; i < 2; i++){
-        for(int j = 0; j < 3; j++){
-            printf("%d ", arr[i][j]);
+    printf("\n예약 후 좌석표\n");
+
+    for (int row = 0; row < 3; row++) {
+        for (int col = 0; col < 4; col++) {
+            printf("%d ", seats[row][col]);
         }
         printf("\n");
     }

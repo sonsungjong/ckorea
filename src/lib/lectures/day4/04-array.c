@@ -1,18 +1,16 @@
-#define _CRT_NO_SECURE_WARNINGS
 #include <stdio.h>
 
 int main() {
-	// #1
-	// 길이가 5인 int형 배열을 선언하고 초기화한다. 이때 각 요소는 원하는 값을 담는다.
-	// [총합과 평균]
-	int num[5] = { 10, 20, 30, 40, 50 };
-	int sum = 0;
-	double avg = 0.0;
-	sum = num[0] + num[1] + num[2] + num[3] + num[4];
-	avg = (double)sum / 5.0;
+    // 0 = 결석, 1 = 출석
+    int attendance[5] = {0, 0, 0, 0, 0};
 
-	printf("총합 : %d \n", sum);
-	printf("평균 : %lf \n", avg);
+    attendance[0] = 1;
+    attendance[2] = 1;
+    attendance[4] = 1;
 
-	return 0;
+    for (int i = 0; i < 5; i++) {
+        printf("%d번 학생 출석 상태: %d\n", i + 1, attendance[i]);
+    }
+
+    return 0;
 }

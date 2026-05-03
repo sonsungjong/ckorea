@@ -1,19 +1,14 @@
 #include <stdio.h>
 
-int main(){
-    int i = 0;
-    int odd[3];
-    int even[5] = {2, 4, 6, 8, 10};
+int main() {
+    int prices[4] = {1500, 2000, 3500, 1000};
+    int total = 0;
 
-    odd[0] = 1;
-    odd[1] = 3;
-    odd[2] = 5;
-
-    printf("%d %d %d\n", odd[0], odd[1], odd[2]);
-
-    for(i = 0; i < 5; i++){
-        printf("%d ", even[i]);
+    for (int i = 0; i < 4; i++) {
+        total += prices[i];
     }
+
+    printf("총 결제 금액: %d원\n", total);
 
     return 0;
 }

@@ -8,8 +8,8 @@
       "args": [],
       "stopAtEntry": false,
       "externalConsole": true,
-      "cwd": "d:/javascript/ckorea/src/lib/lectures/day1",
-      "program": "d:/javascript/ckorea/src/lib/lectures/day1/build/Debug/outDebug",
+      "cwd": "d:/javascript/ckorea/src/lib/lectures/day4",
+      "program": "d:/javascript/ckorea/src/lib/lectures/day4/build/Debug/outDebug",
       "MIMode": "gdb",
       "miDebuggerPath": "gdb",
       "setupCommands": [

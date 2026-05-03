@@ -1,25 +1,28 @@
 #include <stdio.h>
 
-int main(){
-    int numbers[3] = {1,2,3};
-    double dnum[] = { 0.0, 1.0, 2.0 };          // 3칸
+int main() {
+    int scores[5] = {80, 90, 70, 85, 100};
 
-    char characters[] = {'a', 'b', 'c', 'd', 'e'};
-    char 문자열[] = {'a', 'b', 'c', 'd', 'e', '\0'};
-    char string[] = "abcde";        // '\0' 끝에 자동 추가
-    
-    printf("%c\n", characters[0]);
-    printf("%c\n", string[0]);
-    printf("%s\n", 문자열);
-    printf("%s\n", string);
+    printf("1번 학생 점수: %d\n", scores[0]);
+    printf("2번 학생 점수: %d\n", scores[1]);
+    printf("3번 학생 점수: %d\n", scores[2]);
+    printf("4번 학생 점수: %d\n", scores[3]);
+    printf("5번 학생 점수: %d\n", scores[4]);
 
-    char c;
-    char str[50];
+    for (int i = 0; i < 5; i++) {
+        printf("%d번 학생 점수: %d\n", i + 1, scores[i]);
+    }
 
-    scanf("%c", &c);            // 변수는 & 를 붙인다 (해당 위치만 딱 채움)
-    scanf("%s", str);           // 문자열은 이름만 붙인다 (배열 시작위치부터 쭉~ 채우기 때문에)
+    int sum = 0;
+    double average = 0;
+    for (int i = 0; i < 5; i++) {
+        sum += scores[i];
+    }
 
-    printf("%c\n %s\n", c, str);
+    average = sum / 5.0;
+
+    printf("반 총점: %d\n", sum);
+    printf("반 평균: %.2f\n", average);
 
     return 0;
 }
