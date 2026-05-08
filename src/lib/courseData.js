@@ -4,6 +4,7 @@ import day1Quiz from "./quizzes/day1";
 import day2Quiz from "./quizzes/day2";
 import day3Quiz from "./quizzes/day3";
 import day4Quiz from "./quizzes/day4";
+import day5Quiz from "./quizzes/day5";
 
 function readLectureCode(dayId, filename) {
   return fs.readFileSync(
@@ -61,13 +62,13 @@ export const courseData = [
   {
     dayId: "day5",
     title: "Day 5",
-    description: "함수",
+    description: "포인터",
     steps: getDynamicSteps("day5")
   },
   {
     dayId: "day6",
     title: "Day 6",
-    description: "포인터",
+    description: "함수",
     steps: getDynamicSteps("day6")
   },
   {
@@ -88,11 +89,11 @@ export const quizData = [
   day1Quiz,
   day2Quiz,
   day3Quiz,
-  day4Quiz,
+  day5Quiz,
   {
-    dayId: "day5",
-    title: "Day 5 퀴즈",
-    description: "함수 빈칸 완성",
+    dayId: "day6",
+    title: "Day 6 퀴즈",
+    description: "함수",
     questions: [
       {
         id: "1",
@@ -109,28 +110,6 @@ int main() {
     return 0;
 }`,
         answer: `a + b`
-      }
-    ]
-  },
-  {
-    dayId: "day6",
-    title: "Day 6 퀴즈",
-    description: "포인터 빈칸 완성",
-    questions: [
-      {
-        id: "1",
-        prompt: "포인터 `ptr`이 `num`의 주소를 저장하도록 빈칸을 채우세요.",
-        code: `#include <stdio.h>
-
-int main() {
-    int num = 10;
-    int *ptr = ____;
-
-    printf("%d\\n", *ptr);
-
-    return 0;
-}`,
-        answer: `&num`
       }
     ]
   },
