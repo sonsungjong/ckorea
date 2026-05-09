@@ -89,6 +89,7 @@ export const quizData = [
   day1Quiz,
   day2Quiz,
   day3Quiz,
+  day4Quiz,
   day5Quiz,
   {
     dayId: "day6",
